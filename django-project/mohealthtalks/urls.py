@@ -21,7 +21,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     # url(r'^$', HomePageView.as_view()),
     # url(r'(?P<slug>[\w-]+)/$', ShowDetailView.as_view(), name='show')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
