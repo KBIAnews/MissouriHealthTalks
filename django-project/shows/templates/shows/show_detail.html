@@ -1,0 +1,117 @@
+{% extends 'shows/base.html' %}
+{% load static %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block metablock %}
+
+{% endblock %}
+
+{% block content %}
+<div class="podcast-intro">
+    <img class="podcast-art" src="{{object.image.url}}" alt="{{object.name}}">
+    <h1 class="podcast-name">{{object.name}}</h1>
+    <div class="mobile-buffer"></div>
+    <p>{{object.description}}</p>
+
+    <div class="listen-gallery">
+        {% if object.itunes_url %}
+            <a href="{{object.itunes_url}}">
+                <img class="site-badge itunes-badget" src="https://s3.amazonaws.com/media.kbia.org/logos/apple_podcast_badge.svg"
+                    alt="Find on iTunes.">
+            </a>
+        {% endif %}
+        {% if object.npr_one_url %}
+            <a href="{{object.npr_one_url}}">
+                <img class="site-badge npr-badge" src="https://s3.amazonaws.com/media.kbia.org/logos/npr_one.png"
+                    alt="Find on NPR One.">
+            </a>
+        {% endif %}
+    </div>
+
+</div>
+<div class="secondary-listening-gallery">
+    <h2>Other Listening Options</h2>
+    {% if object.feed_url %}
+    <a class="tippy" href="{{object.feed_url}}" title="RSS Feed">
+        <img  src="{% static 'rss-icon.png' %}" alt="RSS Feed">
+    </a>
+    {% endif %}
+    {% if object.google_url %}
+    <a class="tippy" href="{{object.google_url}}" title="Google Play Music">
+        <img src="{% static 'google-play.png' %}" alt="Google Play">
+    </a>
+    {% endif %}
+    {% if object.stitcher_url %}
+    <a class="tippy" href="{{object.stitcher_url}}" title="Stitcher">
+        <img src="{% static 'stitcher-icon.png' %}" alt="Stitcher">
+    </a>
+    {% endif %}
+    {% if object.overcast_url %}
+    <a class="tippy" href="{{object.overcast_url}}" title="Overcast">
+        <img src="{% static 'overcast.png' %}" alt="Overcast">
+    </a>
+    {% endif %}
+    {% if object.pocket_casts_url %}
+    <a class="tippy" href="{{object.pocket_casts_url}}" title="Pocket Casts">
+        <img src="{% static 'pocket-casts.png' %}" alt="Pocket Casts">
+    </a>
+    {% endif %}
+</div>
+<div class="episode-list">
+    <h2>Recent Podcast Episodes</h2>
+    <table>
+        {% for episode in object.episodes.all %}
+        <tr>
+            <td>
+                <span class="ep{{episode.id}} episode-player" data-mp3-url="{{episode.audio_url}}">
+                    <i class="fa fa-play episode-play" data-mp3-url="{{episode.audio_url}}"></i>
+                    <i class="fa fa-stop episode-stop" style="display:none"></i>
+                </span>
+            </td>
+            <td>
+                {{episode.name}}
+            </td>
+            <td class="episode-date">
+                {{episode.date}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+
+</div>
+{% endblock %}
+
+{% block scriptyblock %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+<script>
+    $('.episode-play').on('click', function(e){
+        Howler.unload();
+        $('.episode-stop').css("display", "none");
+        $('.episode-play').css("display", "inline-block");
+
+        var audioUrl = e.target.parentElement.dataset.mp3Url;
+        var sound = new Howl({
+            html5: true,
+            src: [audioUrl]
+        });
+
+        $(e.target.nextElementSibling).css("display", "inline-block");
+
+        $(e.target).css("display", "none");
+
+        sound.play();
+    });
+
+    $('.episode-stop').on('click', function(e){
+        Howler.unload();
+        $('.episode-stop').css("display", "none");
+        $('.episode-play').css("display", "inline-block");
+
+        $(e.target.previousElementSibling).css("display", "inline-block");
+        $(e.target).css("display", "none");
+    });
+</script>
+{% endblock scriptyblock %}

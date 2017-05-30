@@ -1,0 +1,32 @@
+{% extends 'shows/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block metablock %}
+
+{% endblock %}
+
+{% block content %}
+<div class="home-content">
+    <div class="intro-blurb">
+        <h1>Podcasts at KBIA</h1>
+        <p>Click any show to learn more or listen to recent episodes.</p>
+    </div>
+    <div class="show-listing-block">
+        {% for category in object_list %}
+        <div class="show-listing-block-category" id="{{category.slug}}">
+            <h2 class="show-listing-block-name">{{category.name}}</h2>
+            {% for show in category.shows.all %}
+            <a class="show-link-block" href="{{show.get_absolute_url}}">
+                <div class="show-block">
+                    <img src="{{show.image.url}}" alt="{{show.name}}" class="show-block-art">
+                    <h3 class="show-name">{{show.name}}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
