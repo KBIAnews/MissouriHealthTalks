@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['KBIA_BAKERIES_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','nathanlawrence.fwd.wf']
 
 
 # Application definition
@@ -135,8 +135,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 STATICFILES_DIRS =( os.path.join(STATIC_ROOT, 'css/'),
+                    os.path.join(STATIC_ROOT, 'js/'),
                     os.path.join(STATIC_ROOT, 'img/'),
-                  )
+                    )
 
 # File Storage.
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
