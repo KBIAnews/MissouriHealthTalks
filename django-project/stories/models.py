@@ -31,6 +31,9 @@ class Region (models.Model):
     def __str__(self):
         return "%s" % self.name
 
+    def get_absolute_url(self):
+        return "/regions/%s/" % self.slug
+
     class Meta:
         ordering = ['slug']
 
@@ -41,9 +44,13 @@ class Person(models.Model):
     second_name = models.CharField(max_length=1024)
     title = models.CharField(max_length=1024, blank=True)
     description = models.TextField(blank=True)
+    photo = models.ImageField("Square Profile Photo", blank=False)
 
     def __str__(self):
         return "%s" % self.name
+
+    def get_absolute_url(self):
+        return "/people/%s/" % self.slug
 
     class Meta:
         ordering = ['slug']
@@ -53,6 +60,9 @@ class Issue(models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=1024)
     description = models.TextField(blank=True)
+
+    def get_absolute_url(self):
+        return "/issues/%s/" % self.slug
 
     def __str__(self):
         return "%s" % self.name
@@ -82,6 +92,9 @@ class Story (models.Model):
 
     def __str__(self):
         return "%s" % self.title
+
+    def get_absolute_url(self):
+        return "/stories/%s/" % self.slug
 
     class Meta:
         ordering = ['date', 'slug']

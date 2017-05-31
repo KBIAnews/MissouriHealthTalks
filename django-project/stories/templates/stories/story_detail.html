@@ -1,0 +1,92 @@
+{% extends 'stories/base.html' %}
+{% load static %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block metablock %}
+<link rel="canonical" href="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
+<meta property="og:url" content="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
+{% autoescape off %}
+<meta property="og:description" content="{{ object.description }}">
+{% endautoescape %}
+
+{% endblock %}
+
+{% block content %}
+<a href="/" class="back-link"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> BACK TO ALL STORIES</a>
+
+<div class="page-segment story-intro">
+    <h1 class="story-name">{{ object.title }}</h1>
+    {% if object.photo %}
+    <img src="{{object.photo.url}}" alt="{{object.title}}" class="story-photo">
+    {% endif %}
+    <p class="story-date">Recorded {{ object.date }}.</p>
+    <p>{{ object.description }}</p>
+    <p class="story-region">Region:
+        <a href="{{object.region.get_absolute_url}}" class="region-link">{{object.region.name}}</a>
+    </p>
+    <p class="story-issues">
+        Related Issues:
+        {% for issue in object.issues.all %}
+        <a href="{{issue.get_absolute_url}}" class="issue-tag">{{issue.name}}</a>
+        <!--{% if not forloop.last %}-->
+        <!--,-->
+        <!--{% endif %}-->
+        {% endfor %}
+    </p>
+
+</div>
+<div class="page-segment people-listing">
+    <h2>Telling This Story</h2>
+    {% for person in object.people.all %}
+    <div class="person-profile">
+        <img src="{{ person.photo.url }}" alt="{{ person.name }}" class="profile-photo">
+        <div class="profile-info">
+            <h3 class="name">{{ person.name }}</h3>
+            {% if person.title %}
+            <p class="title">{{ person.title }}</p>
+            {% endif %}
+            <p class="profile-link"><a href="{{ person.get_absolute_url }}">View Full Profile</a></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% if object.transcript %}
+<div class="transcript">
+    <h2>Transcript</h2>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scriptyblock %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+<script>
+    $('.episode-play').on('click', function(e){
+        Howler.unload();
+        $('.episode-stop').css("display", "none");
+        $('.episode-play').css("display", "inline-block");
+
+        var audioUrl = e.target.parentElement.dataset.mp3Url;
+        var sound = new Howl({
+            html5: true,
+            src: [audioUrl]
+        });
+
+        $(e.target.nextElementSibling).css("display", "inline-block");
+
+        $(e.target).css("display", "none");
+
+        sound.play();
+    });
+
+    $('.episode-stop').on('click', function(e){
+        Howler.unload();
+        $('.episode-stop').css("display", "none");
+        $('.episode-play').css("display", "inline-block");
+
+        $(e.target.previousElementSibling).css("display", "inline-block");
+        $(e.target).css("display", "none");
+    });
+</script>
+{% endblock scriptyblock %}

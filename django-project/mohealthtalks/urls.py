@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
-# from shows.views import ShowDetailView, HomePageView
+from stories.views import StoryDetailView, HomePageView
 from django.conf import settings
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^$', HomePageView.as_view()),
-    # url(r'(?P<slug>[\w-]+)/$', ShowDetailView.as_view(), name='show')
+    url(r'^$', HomePageView.as_view()),
+    url(r'stories/(?P<slug>[\w-]+)/$', StoryDetailView.as_view(), name='story')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = 'Missouri Health Talks Admin'

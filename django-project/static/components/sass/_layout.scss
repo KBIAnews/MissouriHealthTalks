@@ -21,3 +21,13 @@ $large: 75em;
 	padding: 3%;
 }
 
+div.page-segment{
+	&:not(:first-of-type){
+		margin-top: 1rem;
+	}
+}
+
+a.back-link{
+	text-decoration: none;
+	color: $gray-light;
+}
