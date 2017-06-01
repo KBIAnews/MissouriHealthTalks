@@ -8,7 +8,8 @@ module.exports = function(grunt) {
 			my_target:{
 				files: {
 					'django-project/static/js/player.js': ['django-project/static/components/js/player.js'],
-					'django-project/static/js/siriwave.js': ['django-project/static/components/js/siriwave.js']
+					'django-project/static/js/siriwave.js': ['django-project/static/components/js/siriwave.js'],
+					'django-project/static/js/home.js': ['django-project/static/components/js/home.js']
 				}
 			}
 		},
