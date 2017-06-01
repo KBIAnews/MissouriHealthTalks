@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
 <meta property="og:url" content="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
 {% autoescape off %}
-<meta property="og:description" content="{{ object.description }}">
+<meta property="og:description" content="{{ object.description|markdownify|striptags }}">
 {% endautoescape %}
 
 {% endblock %}
@@ -22,7 +22,7 @@
     <img src="{{object.photo.url}}" alt="{{object.title}}" class="story-photo">
     {% endif %}
     <p class="story-date">Recorded {{ object.date }}.</p>
-    <p>{{ object.description }}</p>
+    <div class="description">{{ object.description|markdownify|safe }}</div>
     <p class="story-region">Region:
         <a href="{{object.region.get_absolute_url}}" class="region-link">{{object.region.name}}</a>
     </p>

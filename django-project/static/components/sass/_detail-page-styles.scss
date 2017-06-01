@@ -32,6 +32,16 @@ div.page-segment{
     }
   }
 
+  div.description{
+    a {
+      color: $project-primary;
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+
 }
 
 h2{

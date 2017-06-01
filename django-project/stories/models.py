@@ -120,7 +120,8 @@ class Story (models.Model):
     slug = models.SlugField(unique=True)
     title = models.CharField(max_length=1024)
     date = models.DateField("Date Recorded")
-    description = models.TextField()
+    description = models.TextField(help_text=("Appears at the top of stories and on index pages. "
+                                   + "Supports markdown."))
     audio_file = models.FileField("Story MP3 Audio")
     photo = models.ImageField("Story Photo", blank=True)
     location = models.ForeignKey(Location,
