@@ -1,5 +1,6 @@
 {% extends 'stories/base.html' %}
 {% load static %}
+{% load markdownify %}
 
 {% block title %}{{ object.title }}{% endblock %}
 
@@ -67,8 +68,11 @@
     {% endfor %}
 </div>
 {% if object.transcript %}
-<div class="transcript">
+<div class="page-segment transcript">
     <h2>Transcript</h2>
+    <div class="transcript-normal-text">
+        {{ object.transcript.text|markdownify|safe }}
+    </div>
 </div>
 {% endif %}
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'storages',
     'bakery',
     'stories',
+    'markdownify',
 ]
 
 MIDDLEWARE = [
@@ -155,3 +156,19 @@ AWS_BUCKET_NAME = 'kbia-mohealthtalks'
 AWS_S3_ENDPOINT = 'https://s3-accelerate.amazonaws.com'
 # BAKERY_VIEWS= ('shows.views.ShowDetailView',
 #                'shows.views.HomePageView',)
+
+# Django Markdownify Settings
+MARKDOWNIFY_WHITELIST_TAGS = [
+    'a',
+    'abbr',
+    'acronym',
+    'b',
+    'blockquote',
+    'em',
+    'i',
+    'li',
+    'ol',
+    'p',
+    'strong',
+    'ul',
+]

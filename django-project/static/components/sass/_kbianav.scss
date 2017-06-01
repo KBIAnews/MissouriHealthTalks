@@ -116,3 +116,9 @@ div.overlay{
 	}
 
 }
+
+@media print {
+	header.kbia-top{
+		display: none;
+	}
+}

@@ -39,3 +39,13 @@ $percent: 100;
   }
   $percent: $percent - 1;
 }
+
+@media print {
+  div.story-playback {
+    display: none;
+  }
+
+  div.audio-player {
+    display: none;
+  }
+}
