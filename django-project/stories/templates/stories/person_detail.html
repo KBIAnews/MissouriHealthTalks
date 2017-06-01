@@ -1,0 +1,54 @@
+{% extends 'stories/base.html' %}
+{% load static %}
+{% load markdownify %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block metablock %}
+<link rel="canonical" href="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
+<meta property="og:url" content="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
+{% autoescape off %}
+<meta property="og:description" content="{{ object.description|markdownify|striptags }}">
+{% endautoescape %}
+
+{% endblock %}
+
+{% block content %}
+<a href="/" class="back-link"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> BACK TO ALL STORIES</a>
+
+<div class="page-segment person-intro">
+    <img src="{{object.photo.url}}" alt="{{object.name}}" class="person-intro-img">
+    <h1 class="name">{{ object.name }}</h1>
+    {% if object.title %}
+    <p class="title">{{object.title}}</p>
+    {% endif %}
+    {% if object.description %}
+    <div class="description">
+        {{object.description|markdownify|safe}}
+    </div>
+    {% endif %}
+</div>
+
+{% if object.stories %}
+<div class="page-segment index-story-list">
+    <h2>Stories with {{object.name}}</h2>
+    {% for story in object.stories.all %}
+    <div class="index-story-item">
+        <a href="{{story.get_absolute_url}}" class="index-story-link">
+            {% if story.photo %}
+            <img src="{{story.photo.url}}" alt="{{story.title}}" class="index-story-photo">
+            {% endif %}
+            <h3>{{story.title}}</h3>
+        </a>
+        <div class="index-story-description">
+            {{story.description|markdownify|safe}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scriptyblock %}
+{% endblock scriptyblock %}

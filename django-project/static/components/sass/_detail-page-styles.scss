@@ -1,5 +1,24 @@
 div.page-segment{
 
+  p{
+    font-size: 1.2rem;
+    line-height: 1.2em;
+    color: $gray-light;
+
+    &:not(:first-of-type){
+      margin-top: 0.5rem;
+    }
+
+    @media screen and (max-width: $medium-screen-width) {
+      @include clearfix;
+      font-size: 1rem;
+    }
+  }
+
+  p.title{
+    color: lighten($gray-light, 20%);
+  }
+
   h1{
     font-size: 3.5rem;
     padding-bottom: 0.3em;
@@ -105,5 +124,20 @@ div.index-story-list{
       padding-right: 0.5rem;
       padding-bottom: 0.2rem;
     }
+  }
+}
+
+div.person-intro{
+  @include clearfix();
+
+  img.person-intro-img{
+    max-height: 10rem;
+    border-radius: 100%;
+    float:right;
+
+    @media screen and (max-width: $small-screen-width){
+      max-height: 5rem;
+    }
+
   }
 }

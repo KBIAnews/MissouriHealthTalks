@@ -38,3 +38,12 @@ class RegionDetailView(BuildableDetailView):
         if self.kwargs['slug']:
             return Region.objects.get(slug=self.kwargs['slug'])
         return super(RegionDetailView, self).get_objects()
+
+class PersonDetailView(BuildableDetailView):
+    model = Person
+    template_name = 'stories/person_detail.html'
+
+    def get_object(self):
+        if self.kwargs['slug']:
+            return Person.objects.get(slug=self.kwargs['slug'])
+        return super(PersonDetailView, self).get_objects()
