@@ -154,8 +154,11 @@ AWS_QUERYSTRING_AUTH = False
 BUILD_DIR = os.path.join(PROJECT_ROOT, 'baked')
 AWS_BUCKET_NAME = 'kbia-mohealthtalks'
 AWS_S3_ENDPOINT = 'https://s3-accelerate.amazonaws.com'
-# BAKERY_VIEWS= ('shows.views.ShowDetailView',
-#                'shows.views.HomePageView',)
+BAKERY_VIEWS= ('stories.views.StoryDetailView',
+               'stories.views.HomePageView',
+               'stories.views.RegionDetailView',
+               'stories.views.IssueDetailView',
+               'stories.views.PersonDetailView',)
 
 # Django Markdownify Settings
 MARKDOWNIFY_WHITELIST_TAGS = [

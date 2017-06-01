@@ -9,6 +9,9 @@
 <meta property="og:url" content="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
 {% autoescape off %}
 <meta property="og:description" content="{{ object.description|markdownify|striptags }}">
+{% if object.photo %}
+<meta property="og:image" content="https://www.missourihealthtalks.org{{object.photo.url}}">
+{% endif %}
 {% endautoescape %}
 
 {% endblock %}

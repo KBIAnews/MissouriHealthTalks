@@ -64,11 +64,19 @@
 
     <div class="home-card home-card-front">
 
-        <div class="container">
+        <div class="home-container">
             <div class="callout">
                 <h1>Your health.</h1>
                 <h1>Your community.</h1>
-                <h1 class="red-callout">Your stories.</h1>
+                <h1>Your stories.</h1>
+            </div>
+            <div class="intro">
+                <p class="description">
+                    Missouri Health Talks is devoted to bringing you conversations from across the state about health access.
+                </p>
+            </div>
+            <div class="recent-story">
+
             </div>
 
         </div>
@@ -80,13 +88,23 @@
     </div>
 
     <div class="home-card-flex">
-        <div class="story-list">
-            <h2>More Recent Stories</h2>
-            {% for story in object_list %}
-            <div class="story-list-item">
-
+        <div class="story-list home-container">
+            <h1>Recent Stories</h1>
+            <div class="index-story-list">
+                {% for story in object_list|slice:":3" %}
+                <div class="index-story-item">
+                    <a href="{{story.get_absolute_url}}" class="index-story-link">
+                        {% if story.photo %}
+                        <img src="{{story.photo.url}}" alt="{{story.title}}" class="index-story-photo">
+                        {% endif %}
+                        <h3>{{story.title}}</h3>
+                    </a>
+                    <div class="index-story-description">
+                        {{story.description|markdownify|safe}}
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 
@@ -95,20 +113,18 @@
     </div>
 
     <div class="home-card-flex">
-
+        <div class="container">
+            <div class="credit">
+                <p>Copyright 2017 KBIA and The University of Missouri. Development and Design by Nathan Lawrence.</p>
+            </div>
+        </div>
     </div>
 
 </div>
 
 
 
-<!--<div class="container">-->
-<!--{% block content %}-->
-<!--{% endblock %}-->
-<!--<div class="credit">-->
-<!--<p>Copyright 2017 KBIA and The University of Missouri. Development and Design by Nathan Lawrence.</p>-->
-<!--</div>-->
-<!--</div>-->
+
 
 <div id="nav-scr" class="overlay">
 
