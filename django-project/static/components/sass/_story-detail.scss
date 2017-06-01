@@ -126,20 +126,6 @@ p.story-issues {
   }
 }
 
-h2{
-  color: lighten($gray-light, 20);
-  font-size: 1rem;
-  text-transform: uppercase;
-  &:after{
-    display: table;
-    width: 100%;
-    padding-top: 4px;
-    border-bottom: 1px solid lighten($gray-light, 30);
-    content: "";
-    margin-bottom: 1rem;
-  }
-}
-
 div.mobile-buffer{
   @media screen and (max-width: $small-screen-width){
     clear: both;

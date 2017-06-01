@@ -20,3 +20,12 @@ class StoryDetailView(BuildableDetailView):
         if self.kwargs['slug']:
             return Story.objects.get(slug=self.kwargs['slug'])
         return super(StoryDetailView, self).get_objects()
+
+class IssueDetailView(BuildableDetailView):
+    model = Issue
+    template_name = 'stories/issue_detail.html'
+
+    def get_object(self):
+        if self.kwargs['slug']:
+            return Issue.objects.get(slug=self.kwargs['slug'])
+        return super(IssueDetailView, self).get_objects()
