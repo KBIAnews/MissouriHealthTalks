@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
-from stories.views import StoryDetailView, IssueDetailView, HomePageView
+from stories.views import StoryDetailView, IssueDetailView, RegionDetailView, HomePageView
 from django.conf import settings
 
 
@@ -24,7 +24,8 @@ urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   url(r'^$', HomePageView.as_view()),
                   url(r'stories/(?P<slug>[\w-]+)/$', StoryDetailView.as_view(), name='story'),
-                  url(r'issues/(?P<slug>[\w-]+)/$', IssueDetailView.as_view(), name='issue')
+                  url(r'issues/(?P<slug>[\w-]+)/$', IssueDetailView.as_view(), name='issue'),
+                  url(r'regions/(?P<slug>[\w-]+)/$', RegionDetailView.as_view(), name='region')
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = 'Missouri Health Talks Admin'

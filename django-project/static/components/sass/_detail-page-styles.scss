@@ -58,6 +58,13 @@ div.index-story-list{
 
   div.index-story-item{
     @include clearfix();
+    margin-bottom: 1rem;
+
+    &:not(:first-of-type){
+      padding-top: 1rem;
+
+      border-top: thin solid $gray-lightest;
+    }
 
     a {
       color: $project-primary;
