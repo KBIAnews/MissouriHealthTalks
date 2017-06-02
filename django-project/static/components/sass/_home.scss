@@ -9,6 +9,10 @@ div.home-cards-contain{
     //background-color: $gray-light;
   }
 
+  div.home-card-map {
+    z-index: -1;
+  }
+
   div.home-card-front{
     background-color: $gray-dark;
     background-blend-mode: multiply;
@@ -119,3 +123,30 @@ div.story-list{
     }
   }
 }
+
+
+div.link-button-block{
+  margin-top: 1rem;
+  font-weight: lighter;
+  font-size: 1.2rem;
+
+
+  a.home-button {
+
+    color : $project-text-dark;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0.2rem;
+    padding-top: 0.2rem;
+    text-decoration: none;
+    border: solid $project-primary 1px;
+
+
+
+    &:hover{
+      background-color: $project-primary;
+      color: $project-text-dark;
+    }
+  }
+}
+
