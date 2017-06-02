@@ -6,14 +6,18 @@
 
 {% block metablock %}
 <link rel="canonical" href="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
+<meta property="twitter:title" content="{{ object.title }}">
+<meta property="twitter:creator" content="kbia">
 <meta property="og:url" content="https://www.missourihealthtalks.org{{ object.get_absolute_url }}">
 {% autoescape off %}
 <meta property="og:description" content="{{ object.description|markdownify|striptags }}">
-{% if object.photo %}
-<meta property="og:image" content="https://www.missourihealthtalks.org{{object.photo.url}}">
-{% endif %}
+<meta property="twitter:description" content="{{ object.description|markdownify|striptags }}">
 {% endautoescape %}
-
+{% if object.photo %}
+<meta property="og:image" content="{{object.photo.url}}">
+<meta property="twitter:image" content="{{object.photo.url}}">
+<meta property="twitter:image:alt" content="{{object.title}}">
+{% endif %}
 {% endblock %}
 
 {% block content %}
