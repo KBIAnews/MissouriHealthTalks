@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from stories.views import StoryDetailView, IssueDetailView, RegionDetailView, HomePageView, PersonDetailView
 from django.conf import settings
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
@@ -27,6 +28,7 @@ urlpatterns = [
                   url(r'issues/(?P<slug>[\w-]+)/$', IssueDetailView.as_view(), name='issue'),
                   url(r'regions/(?P<slug>[\w-]+)/$', RegionDetailView.as_view(), name='region'),
                   url(r'people/(?P<slug>[\w-]+)/$', PersonDetailView.as_view(), name='person'),
+                  url(r'^robots\.txt$', TemplateView.as_view(template_name='stories/robots.txt', content_type='text/plain')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = 'Missouri Health Talks Admin'
