@@ -149,5 +149,5 @@ class Story (models.Model):
         return "/stories/%s/" % self.slug
 
     class Meta:
-        ordering = ['date', 'slug']
+        ordering = ['-date', 'slug']
         verbose_name_plural = "stories"
