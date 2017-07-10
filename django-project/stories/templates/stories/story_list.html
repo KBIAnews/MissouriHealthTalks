@@ -1,6 +1,7 @@
 <html>
 <head>
     {% load static %}
+    {% load snip %}
     {% load markdownify %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +45,7 @@
                     title: "{{story.title}}",
                     url: "{{story.get_absolute_url}}",
                     photoUrl: "{{story.photo.url}}",
-                    description: {% autoescape off %}"{{story.description|markdownify|striptags}}"{% endautoescape %},
+                    description: {% autoescape off %}"{{story.description|markdownify|striptags|snip}}"{% endautoescape %},
         lat: {{story.location.lat}},
         long: {{story.location.long}}
         });
@@ -103,7 +104,7 @@
                         <h3>{{story.title}}</h3>
                     </a>
                     <div class="index-story-description">
-                        {{story.description|markdownify|safe}}
+                        {{story.description|markdownify|snip|safe}}
                     </div>
                 </div>
                 {% endfor %}
