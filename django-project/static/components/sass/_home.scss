@@ -150,3 +150,24 @@ div.link-button-block{
   }
 }
 
+
+div.topics-listing{
+
+  div.topics-list{
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+
+    @include clearfix;
+
+    a {
+      color: $project-primary;
+
+      margin-right: 5px;
+      margin-bottom: 5px;
+
+      float: left;
+
+      @include outline-button($project-primary);
+    }
+  }
+}

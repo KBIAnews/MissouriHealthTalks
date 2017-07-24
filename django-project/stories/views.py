@@ -12,6 +12,11 @@ class HomePageView(BuildableListView):
     queryset = Story.objects.all()
     model = Story # This also means the template for this will be story_list.html
 
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['issues'] = Issue.objects.all()
+        return context
+
 class StoryDetailView(BuildableDetailView):
     model = Story
     template_name = 'stories/story_detail.html'
