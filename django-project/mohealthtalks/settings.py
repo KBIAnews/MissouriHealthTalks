@@ -174,4 +174,5 @@ MARKDOWNIFY_WHITELIST_TAGS = [
     'p',
     'strong',
     'ul',
+    'h3',
 ]
