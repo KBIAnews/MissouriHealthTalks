@@ -21,14 +21,15 @@ class TranscriptAdmin(admin.ModelAdmin):
 
 @admin.register(Story)
 class StoryAdmin(ReverseModelAdmin):
-    list_display = ['title', 'date']
-    list_filter = ['date', 'region', 'location']
+    list_display = ['title', 'air_date', 'recorded_date']
+    list_filter = ['recorded_date', 'region', 'location']
     search_fields = ['title', 'slug', 'description', 'transcript__text']
     fieldsets = (
         (None, {
             'fields': (
                 ('title', 'slug'),
-                'date',
+                'recorded_date',
+                'air_date',
                 ('region', 'location'),
                 'description',
             ),
@@ -112,7 +113,7 @@ class IssueAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'name',
+                'named',
                 'slug',
                 'description'
             )

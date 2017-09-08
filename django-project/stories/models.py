@@ -119,7 +119,8 @@ class Issue(models.Model):
 class Story (models.Model):
     slug = models.SlugField(unique=True)
     title = models.CharField(max_length=1024)
-    date = models.DateField("Date Recorded")
+    recorded_date = models.DateField("Date Recorded")
+    air_date = models.DateField("Date First Aired", null=True)
     description = models.TextField(help_text=("Appears at the top of stories and on index pages. "
                                    + "Supports markdown."))
     audio_file = models.FileField("Story MP3 Audio")
@@ -150,5 +151,5 @@ class Story (models.Model):
         return "/stories/%s/" % self.slug
 
     class Meta:
-        ordering = ['-date', 'slug']
+        ordering = ['-air_date', 'slug']
         verbose_name_plural = "stories"
