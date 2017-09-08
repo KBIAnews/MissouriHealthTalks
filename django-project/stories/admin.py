@@ -14,8 +14,16 @@ class TranscriptAdmin(admin.ModelAdmin):
     ]
 
 # Register your models here.
-admin.site.register(Person)
-admin.site.register(Story)
+
+@admin.register(Story)
+class StoryAdmin(admin.ModelAdmin):
+    list_display = ['title', 'date']
+    list_filter = ['date', 'region', 'location']
+    search_fields = ['title', 'slug', 'description', 'transcript__text']
+@admin.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+    list_display = ['name', 'title']
+    search_fields = ['name', 'title']
 admin.site.register(Region)
 admin.site.register(Issue)
 admin.site.register(Location)
