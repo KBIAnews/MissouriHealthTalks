@@ -140,7 +140,8 @@ class Story (models.Model):
                                    help_text=("If you do not add a transcript, one will not"
                                     + " be displayed."),
                                    blank=True,
-                                   null=True)
+                                   null=True,
+                                   related_name='transcript')
 
     def __str__(self):
         return "%s" % self.title

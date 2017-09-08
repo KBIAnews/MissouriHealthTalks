@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bakery',
     'stories',
     'markdownify',
+    'django_reverse_admin',
 ]
 
 MIDDLEWARE = [
