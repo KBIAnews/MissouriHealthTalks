@@ -113,7 +113,7 @@ class IssueAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'named',
+                'name',
                 'slug',
                 'description'
             )
