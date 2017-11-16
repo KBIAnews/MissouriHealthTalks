@@ -48,6 +48,14 @@ div.story-intro{
       @include clearfix;
       font-size: 1rem;
     }
+
+    em {
+      font-style: italic;
+    }
+
+    strong {
+      font-weight: bold;
+    }
   }
 
   p.story-date{
@@ -217,6 +225,10 @@ div.transcript{
       strong {
         color: $project-text;
         font-weight: bold;
+      }
+
+      em {
+        font-style: italic;
       }
     }
 
