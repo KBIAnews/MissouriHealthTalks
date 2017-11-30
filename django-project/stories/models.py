@@ -118,7 +118,8 @@ class Issue(models.Model):
 
 class Story (models.Model):
     slug = models.SlugField(unique=True)
-    title = models.CharField(max_length=1024)
+    title = models.CharField(max_length=1024,
+                             help_text="If this title is a quote, make sure your quotation marks aren't curly - Django hates those.")
     recorded_date = models.DateField("Date Recorded")
     air_date = models.DateField("Date First Aired", null=True)
     description = models.TextField(help_text=("Appears at the top of stories and on index pages. "
