@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['KBIA_BAKERIES_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','nathanlawrence.fwd.wf']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -159,7 +159,8 @@ BAKERY_VIEWS= ('stories.views.StoryDetailView',
                'stories.views.HomePageView',
                'stories.views.RegionDetailView',
                'stories.views.IssueDetailView',
-               'stories.views.PersonDetailView',)
+               'stories.views.PersonDetailView',
+               'stories.feeds.StoriesRSSFeed',)
 
 # Django Markdownify Settings
 MARKDOWNIFY_WHITELIST_TAGS = [
